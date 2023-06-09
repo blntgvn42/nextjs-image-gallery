@@ -18,6 +18,7 @@ export function generateMetadata({params}: PageProps): Metadata {
 
 // dynamic params ile sadece izin verilen parametrelerin gelmesini sağlayabiliriz.
 // diğer türlü error sayfasına yönlendirilir
+
 // @ts-ignore
 export const dynamicParams = false;
 
@@ -29,7 +30,7 @@ export function generateStaticParams() {
 const Page = async ({params}: PageProps) => {
     const {topic} = params
 
-    const response = await fetch(`,`
+    const response = await fetch(`https://api.unsplash.com/photos/random?query=${topic}&count=3&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
         , {
             cache: 'force-cache'
         })
